@@ -1,11 +1,28 @@
 import "./App.css";
+import React from "react";
+import History from "./routes/history/History";
+import MainPage from "./routes/main/MainPage";
+import {
+  Route,
+  Routes,
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import { loader as MainLoader } from "./routes/main/MainPage";
 
 function App() {
-  return (
-    <div>
-      <h1>Galery App</h1>
-    </div>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <MainPage />,
+      loader: MainLoader,
+    },
+    {
+      path: "/history",
+      element: <History />,
+    },
+  ]);
+  return <RouterProvider router={router} />;
 }
 
 export default App;
